@@ -750,6 +750,11 @@ C\cyro\cyrd\cyre\cyrr\cyrzh\cyra\cyrn\cyri\cyre\ \cyrr\cyra\cyrb%
 \thispagestyle{empty}
 \shapka
 
+\vspace{1cm}
+\begin{flushright}
+    \CYRK\cyra\cyrf\cyre\cyrd\cyrr\cyra\ \@chair
+\end{flushright}
+
 \vspace{3cm}
 {\centering
 \textbf{\MakeUppercase{\@title}}
@@ -768,9 +773,9 @@ C\cyro\cyrd\cyre\cyrr\cyrzh\cyra\cyrn\cyri\cyre\ \cyrr\cyra\cyrb%
 \end{flushleft}
 \vfill
 
-\noindent
-\CYRP\cyrr\cyro\cyrv\cyre\cyrr\cyri\cyrl\\
-\signature{\@satitle}{\@saname}
+%\noindent
+%\CYRP\cyrr\cyro\cyrv\cyre\cyrr\cyri\cyrl\\
+%\signature{\@satitle}{\@saname}
 
 \vfill
 {\centering{\cyr\CYRS\cyra\cyrr\cyra\cyrt\cyro\cyrv\ \@date}
