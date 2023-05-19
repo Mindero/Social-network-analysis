@@ -32,19 +32,23 @@
 \usepackage{array}
 \usepackage[english,russian]{babel}
 \usepackage{minted}
+\usepackage{caption}
+\usepackage{subcaption}
+\setminted[python3]{fontsize=\small, breaklines=true, style=bw, linenos}
 % Используется автором репозитория
 %\usemintedstyle{xcode}
 % Этот пакет включает в себя аналогичный Times New Roman шрифт.
 % Необходим для успешной компиляции для UNIX-систем ввиду отсутствия TNR в нем.
 % Можно использовать и для Windows.
 %\usepackage{tempora}
+\usepackage{tgtermes}
 
 
 \usepackage[colorlinks=false]{hyperref}
 
 
 \newcommand{\eqdef}{\stackrel {\rm def}{=}}
-
+\renewcommand\theFancyVerbLine{\small\arabic{FancyVerbLine}}
 \newtheorem{lem}{Лемма}
 
 % % При использовании biblatex вместо bibtex
@@ -66,13 +70,13 @@
 \group{151}
 
 % Факультет (в родительном падеже) (по умолчанию "факультета КНиИТ")
-%\department{факультета КНиИТ}
+\department{факультета компьютерных наук и информационных технологий}
 
 % Специальность/направление код - наименование
 %\napravlenie{02.03.02 "--- Фундаментальная информатика и информационные технологии}
 %\napravlenie{02.03.01 "--- Математическое обеспечение и администрирование информационных систем}
 %\napravlenie{09.03.01 "--- Информатика и вычислительная техника}
-\napravlenie{09.03.04 "--- Программная инженерия}
+\napravlenie{09.03.04 Программная инженерия}
 %\napravlenie{10.05.01 "--- Компьютерная безопасность}
 
 % Для студентки. Для работы студента следующая команда не нужна.
@@ -86,8 +90,8 @@
 %\chname{С.\,В.\,Миронов}
 
 %Научный руководитель (для реферата преподаватель проверяющий работу)
-\satitle{доцент, к.\,ф.-м.\,н.} %должность, степень, звание
-\saname{А.\,П.\,Грецова}
+%\satitle{доцент} %должность, степень, звание
+%\saname{А.\,П.\,Грецова}
 
 % Руководитель практики от организации (только для практики,
 % для остальных типов работ не используется)
@@ -151,9 +155,11 @@
 \section{Анализ социальных сетей}
 \input{social_media_analytics.tex}
 
+\section{Практическая часть}
+\input{practice.tex}
 % Раздел "Заключение"
 \conclusion
-
+\input{conclusion.tex}
 %Библиографический список, составленный вручную, без использования BibTeX
 %
 %\begin{thebibliography}{99}
@@ -164,8 +170,10 @@
 %Библиографический список, составленный с помощью BibTeX
 %
 \nocite{*}
+\inputencoding{cp1251}
 \bibliographystyle{gost780uv}
 \bibliography{thesis}
+\inputencoding{utf8}
 
 % % При использовании biblatex вместо bibtex
 %\printbibliography
@@ -173,5 +181,10 @@
 % Окончание основного документа и начало приложений
 % Каждая последующая секция документа будет являться приложением
 \appendix
+
+\section{Исходный код на Python,осуществляющий сбор данных} 
+\label{code}
+\inputminted{python3}{../collect.py}
+
 
 \end{document}
