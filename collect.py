@@ -1,6 +1,6 @@
 import requests
 import time
-# token vk
+# token vk. Необходимо вписать свой
 token = ""
 # Функция получения подписчиков группы
 def get_users(nodes):
@@ -18,6 +18,7 @@ def get_users(nodes):
                         offset = offset, count = count_subscribes, v = 5.131)
             request = requests.get(url, params = params)
             data = request.json()
+            #print(data)
             if (data['response']['items']):
                 offset += count_subscribes
             else:
@@ -31,7 +32,7 @@ def get_profile_info(nodes):
     url = "https://api.vk.com/method/users.get?"
     for user in nodes:
         params = dict(access_token=token, user_id=user, 
-                      fields = "bdate,home_town,sex,followers_count",v=5.131)
+                      fields = "bdate,sex,followers_count",v=5.131)
         request = requests.get(url, params=params)
         data = request.json()
         nodes[user] = data['response'][0]
@@ -55,11 +56,14 @@ def get_friends(nodes, edges):
 # используются в Gephi для отрисовки анализа графа
 def create_graph(nodes, edges):
     file = open("./node.csv",'w', encoding = 'utf8')
-    file.write("id\tlabel\tfollowers_count\tbdate\tsex\thome_town\n")
+    file.write("id\tlabel\tfollowers_count\tbdate\tsex\n")
     for node in nodes.values():
+        followers_count = node['followers_count'] if 'followers_count' in node else 0
+        bdate = node['bdate'] if 'bdate' in node else ""
+        sex = node['sex'] if 'sex' in node else 0
         file.write(f"{node['id']}\t{node['first_name']} "
-                   f"{node['last_name']}\t{node['followers_count']}"
-                   f"\t{node['bdate']}\t{node['sex']}\t{node['home_town']}\n")
+                   f"{node['last_name']}\t{followers_count}"
+                   f"\t{bdate}\t{sex}\n")
     file.close()
     file = open("./edges.csv", 'w', encoding='utf8')
     file.write("source;target\n")
